@@ -14,9 +14,9 @@ const aiueoRoma = "a|i|u|e|o|ka,ca|ki|ku,cu|ke|ko,co|sa|si,shi,ci|su|se,ce|so|ta
 const dakuon = "がぎぐげござじずぜそだぢづでどばびぶべぼぱぴぷぺぽ";
 const dakuonRoma = "ga|gi|gu|ge|go|za|zi,ji|zu|ze|zo|da|di|du|de|do|ba|bi|bu|be|bo|pa|pi|pu|pe|po".split("|");
 let typeTimer;
-// https://dova-s.jp/bgm/play14822.html
+// https://dova-s.jp/bgm/play14891.html
 const bgm = new Audio('bgm.mp3');
-bgm.volume = 0.3;
+bgm.volume = 0.2;
 bgm.loop = true;
 let typeIndex = 0;
 let errorCount = 0;
