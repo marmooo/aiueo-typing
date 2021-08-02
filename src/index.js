@@ -647,6 +647,7 @@ function scoring() {
   document.getElementById('totalType').innerText = normalCount + errorCount;
   document.getElementById('typeSpeed').innerText = typeSpeed;
   document.getElementById('errorType').innerText = errorCount;
+  document.addEventListener('keydown', startKeyEvent, { once:true });
 }
 
 function changeMode() {
@@ -676,6 +677,6 @@ document.getElementById('gradeOption').onchange = changeGrade;
 document.getElementById('mode').onclick = changeMode;
 document.getElementById('guideSwitch').onchange = toggleGuide;
 startButton.addEventListener('click', replay);
-document.addEventListener('keydown', startKeyEvent);
+document.addEventListener('keydown', startKeyEvent, { once:true });
 document.addEventListener('click', unlockAudio, { once:true, useCapture:true });
 
