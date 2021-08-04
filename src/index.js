@@ -367,11 +367,6 @@ function removeGuide(currNode) {
     button.classList.remove('bg-info');
   }
   let key = currNode.textContent;
-  if (gradeOption.selectedIndex == 1) {
-    key = key.toUpperCase();
-  } else {
-    key = key.toLowerCase();
-  }
   if (key == ' ') { key = '{space}'; }
   const button = simpleKeyboard.getButtonElement(key);
   if (button) {
@@ -382,11 +377,6 @@ function removeGuide(currNode) {
 function showGuide(currNode) {
   if (guide) {
     let key = currNode.textContent;
-    if (gradeOption.selectedIndex == 1) {
-      key = key.toUpperCase();
-    } else {
-      key = key.toLowerCase();
-    }
     const button = simpleKeyboard.getButtonElement(key);
     if (button) {
       button.classList.add('bg-info');
@@ -508,12 +498,22 @@ function getRandomInt(min, max) {
 
 function typable() {
   let problem, en;
-  if (gradeOption.selectedIndex < 1) {
-    problem = aiueo;
-    en = aiueoRoma[solveCount];
-  } else {
-    problem = dakuon;
-    en = dakuonRoma[solveCount];
+  switch (gradeOption.selectedIndex) {
+    case 0:
+      problem = aiueo.slice(0, 25);
+      en = aiueoRoma[solveCount];
+      break;
+    case 1:
+      problem = aiueo.slice(25);
+      en = aiueoRoma[solveCount + 25];
+      break;
+    case 2:
+      problem = aiueo;
+      en = aiueoRoma[solveCount];
+      break;
+    default:
+      problem = dakuon;
+      en = dakuonRoma[solveCount];
   }
   if (solveCount >= problem.length) {
     speechSynthesis.cancel();
@@ -658,22 +658,12 @@ function changeMode() {
   }
 }
 
-function changeGrade() {
-  var grade = gradeOption.selectedIndex;
-  if (grade == 0) {
-    simpleKeyboard.setOptions({ layoutName:'default' });
-  } else {
-    simpleKeyboard.setOptions({ layoutName:'shift' });
-  }
-}
-
 aa.parentNode.style.height = calcAAOuterSize() + 'px';
 resizeFontSize(aa);
 window.addEventListener('resize', function() {
   aa.parentNode.style.height = calcAAOuterSize() + 'px';
   resizeFontSize(aa);
 });
-document.getElementById('gradeOption').onchange = changeGrade;
 document.getElementById('mode').onclick = changeMode;
 document.getElementById('guideSwitch').onchange = toggleGuide;
 startButton.addEventListener('click', replay);
