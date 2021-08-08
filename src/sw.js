@@ -10,7 +10,7 @@ var urlsToCache = [
   '/aiueo-typing/keyboard.mp3',
   '/aiueo-typing/favicon/original.svg',
   'https://marmooo.github.io/fonts/textar-light.woff2',
-  'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css',
+  'https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css',
   'https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js',
   'https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css',
 ];
