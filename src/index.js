@@ -438,8 +438,12 @@ function replay() {
 }
 
 function calcAAOuterSize() {
-  const keyboardHeight = document.getElementById('keyboard').offsetHeight;
-  return document.documentElement.clientHeight - aa.parentNode.offsetTop - keyboardHeight;
+  let height = document.documentElement.clientHeight;
+  height -= document.getElementById('header').offsetHeight;
+  height -= document.getElementById('infoPanel').offsetHeight;
+  height -= document.getElementById('typePanel').offsetHeight;
+  height -= document.getElementById('keyboard').offsetHeight;
+  return height;
 }
 
 function resizeFontSize(node) {
