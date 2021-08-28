@@ -594,6 +594,7 @@ function replay() {
 
 function startKeyEvent(event) {
   if (event.key == ' ' || event.key == 'Spacebar') {
+    document.removeEventListener("keydown", startKeyEvent);
     replay();
   }
 }
@@ -651,7 +652,7 @@ function scoring() {
   document.getElementById('totalType').innerText = normalCount + errorCount;
   document.getElementById('typeSpeed').innerText = typeSpeed;
   document.getElementById('errorType').innerText = errorCount;
-  document.addEventListener('keydown', startKeyEvent, { once:true });
+  document.addEventListener('keydown', startKeyEvent);
 }
 
 function changeMode() {
@@ -671,6 +672,6 @@ window.addEventListener('resize', function() {
 document.getElementById('mode').onclick = changeMode;
 document.getElementById('guideSwitch').onchange = toggleGuide;
 startButton.addEventListener('click', replay);
-document.addEventListener('keydown', startKeyEvent, { once:true });
+document.addEventListener('keydown', startKeyEvent);
 document.addEventListener('click', unlockAudio, { once:true, useCapture:true });
 
