@@ -25,7 +25,8 @@ function removeGuide(currNode){const prevNode=currNode.previousSiblingElement;if
 const button=simpleKeyboard.getButtonElement(key);button.classList.remove("bg-info");}
 let key=currNode.textContent;if(key==" ")key="{space}";const button=simpleKeyboard.getButtonElement(key);if(button){button.classList.remove("bg-info");}}
 function showGuide(currNode){if(guide){const key=currNode.textContent;const button=simpleKeyboard.getButtonElement(key);if(button){button.classList.add("bg-info");}}}
-function typeEvent(event){typeEventKey(event.key);}
+function typeEvent(event){const key=patchEvent(event);if(key==" "||key=="Spacebar"){event.preventDefault();}
+typeEventKey(key);}
 function typeEventKey(key){const currNode=romaNode.childNodes[typeIndex];if(key.match(/^[^0-9]$/)){if(key==currNode.textContent.toLowerCase()){typeNormal(currNode);removeGuide(currNode);underlineSpace(currNode);}else{const state=checkTypeStyle(currNode,currNode.textContent,event.key,romaNode,);if(!state){playAudio(incorrectAudio,0.3);errorCount+=1;}}
 if(typeIndex==romaNode.childNodes.length){nextProblem();}else{showGuide(romaNode.childNodes[typeIndex]);}}else{switch(key){case "NonConvert":{[...romaNode.children].forEach((span)=>{span.classList.remove("d-none");});downTime(5);break;}
 case "Convert":{const text=romaNode.textContent;loopVoice(text.toLowerCase(),1);break;}
@@ -46,7 +47,7 @@ resizeFontSize(aa);showGuide(romaNode.childNodes[0]);}}
 function countdown(){typeIndex=normalCount=errorCount=solveCount=0;document.getElementById("guideSwitch").disabled=true;document.getElementById("virtualKeyboard").disabled=true;infoPanel.classList.add("d-none");playPanel.classList.add("d-none");countPanel.classList.remove("d-none");scorePanel.classList.add("d-none");counter.innerText=3;const timer=setInterval(function(){const counter=document.getElementById("counter");const colors=["skyblue","greenyellow","violet","tomato"];if(parseInt(counter.innerText)>1){const t=parseInt(counter.innerText)-1;counter.style.backgroundColor=colors[t];counter.innerText=t;}else{clearInterval(timer);document.getElementById("guideSwitch").disabled=false;document.getElementById("virtualKeyboard").disabled=false;infoPanel.classList.remove("d-none");playPanel.classList.remove("d-none");countPanel.classList.add("d-none");scorePanel.classList.add("d-none");typable();startTypeTimer();if(localStorage.getItem("bgm")==1){bgm.play();}
 document.addEventListener("keydown",typeEvent);startButton.disabled=false;}},1000);}
 function replay(){clearInterval(typeTimer);removeGuide(romaNode.childNodes[typeIndex]);document.removeEventListener("keydown",typeEvent);initTime();countdown();typeIndex=normalCount=errorCount=solveCount=0;countPanel.classList.remove("d-none");scorePanel.classList.add("d-none");}
-function startKeyEvent(event){if(event.key==" "||event.key=="Spacebar"){document.removeEventListener("keydown",startKeyEvent);replay();}}
+function startKeyEvent(event){if(event.key==" "||event.key=="Spacebar"){event.preventDefault();document.removeEventListener("keydown",startKeyEvent);replay();}}
 function startTypeTimer(){const timeNode=document.getElementById("time");typeTimer=setInterval(function(){const arr=timeNode.innerText.split("秒 /");const t=parseInt(arr[0]);if(t>0){timeNode.innerText=(t-1)+"秒 /"+arr[1];}else{clearInterval(typeTimer);bgm.pause();playAudio(endAudio);scoring();}},1000);}
 function downTime(n){const timeNode=document.getElementById("time");const arr=timeNode.innerText.split("秒 /");const t=parseInt(arr[0]);const downedTime=t-n;if(downedTime<0){timeNode.innerText="0秒 /"+arr[1];}else{timeNode.innerText=downedTime+"秒 /"+arr[1];}}
 function initTime(){document.getElementById("time").innerText=gameTime+"秒 / "+gameTime+
