@@ -293,9 +293,9 @@ function checkTypeStyle(currNode, word, key, romaNode) {
     // jya, jyu, jyo --> ja, ju, jo
     fixTypeStyle(currNode, key);
     if (n) nextNode.remove();
-  } else if (key == "y" && word == "j" && auo.includes(n)) { // ja, ju, jo --> jya, jyu, jyo
+  } else if (key == "y" && p == "j" && auo.includes(word)) { // ja, ju, jo --> jya, jyu, jyo
     fixTypeStyle(currNode, key);
-    fixTypeStyle(currNode, n);
+    appendWord(currNode, n);
   } else if (key == "z" && word == "j" && n == "y") { // jya, jyi, jyu, jye, jyo --> zya, zyi, zyu, zye, zyo
     fixTypeStyle(currNode, key);
   } else if (key == "t" && word == "c" && n == "y") { // cya, cyi, cyu, cye, cyo --> tya, tyi, tyu, tye, tyo
