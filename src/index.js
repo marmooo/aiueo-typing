@@ -275,10 +275,10 @@ function checkTypeStyle(currNode, word, key, romaNode) {
   } else if (ie.includes(key) && p == "w" && word == "h" && ie.includes(n)) { // whi, whe --> wi, we
     fixTypeStyle(currNode, key);
     if (n) nextNode.remove();
-  } else if (key == "h" && p == "s" && word == "y" && aiueo.includes(n)) {
+  } else if (key == "h" && p == "s" && word == "y" && aueo.includes(n)) {
     // sya, syu, sye, syo --> sha, shu, she, sho
     fixTypeStyle(currNode, key);
-  } else if (key == "y" && p == "s" && word == "h" && aiueo.includes(n)) {
+  } else if (key == "y" && p == "s" && word == "h" && aueo.includes(n)) {
     // sha, shu, she, sho --> sya, syu, sye, syo
     fixTypeStyle(currNode, key);
   } else if (key == "j" && word == "z" && n == "y" && auo.includes(nn)) { // zya, zyu, zyo --> ja, ju, jo
