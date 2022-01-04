@@ -27,7 +27,7 @@ let key=currNode.textContent;if(key==" ")key="{space}";const button=simpleKeyboa
 function showGuide(currNode){if(guide){const key=currNode.textContent;const button=simpleKeyboard.getButtonElement(key);if(button){button.classList.add("bg-info");}}}
 function typeEvent(event){if(event.key==" "||event.key=="Spacebar"){event.preventDefault();}
 typeEventKey(event.key);}
-function typeEventKey(key){const currNode=romaNode.childNodes[typeIndex];if(key.match(/^[^0-9]$/)){if(key==currNode.textContent.toLowerCase()){typeNormal(currNode);removeGuide(currNode);underlineSpace(currNode);}else{const state=checkTypeStyle(currNode,currNode.textContent,event.key,romaNode,);if(!state){playAudio(incorrectAudio,0.3);errorCount+=1;}}
+function typeEventKey(key){const currNode=romaNode.childNodes[typeIndex];if(/^[^0-9]$/.test(key)){if(key==currNode.textContent.toLowerCase()){typeNormal(currNode);removeGuide(currNode);underlineSpace(currNode);}else{const state=checkTypeStyle(currNode,currNode.textContent,event.key,romaNode,);if(!state){playAudio(incorrectAudio,0.3);errorCount+=1;}}
 if(typeIndex==romaNode.childNodes.length){nextProblem();}else{showGuide(romaNode.childNodes[typeIndex]);}}else{switch(key){case "NonConvert":{[...romaNode.children].forEach((span)=>{span.classList.remove("d-none");});downTime(5);break;}
 case "Convert":{const text=romaNode.textContent;loopVoice(text.toLowerCase(),1);break;}
 case "Escape":case "Esc":replay();break;}}}
