@@ -1,13 +1,12 @@
-var CACHE_NAME = '2022-02-19 15:30';
+var CACHE_NAME = '2022-03-06 01:00';
 var urlsToCache = [
   "/aiueo-typing/",
   "/aiueo-typing/index.js",
-  "/aiueo-typing/bgm.mp3",
-  "/aiueo-typing/cat.mp3",
-  "/aiueo-typing/correct.mp3",
-  "/aiueo-typing/end.mp3",
-  "/aiueo-typing/index.js",
-  "/aiueo-typing/keyboard.mp3",
+  "/aiueo-typing/mp3/bgm.mp3",
+  "/aiueo-typing/mp3/cat.mp3",
+  "/aiueo-typing/mp3/correct.mp3",
+  "/aiueo-typing/mp3/end.mp3",
+  "/aiueo-typing/mp3/keyboard.mp3",
   "/aiueo-typing/favicon/original.svg",
   "https://marmooo.github.io/fonts/textar-light.woff2",
   "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css",
