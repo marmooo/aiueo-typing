@@ -64,11 +64,15 @@
         font-size:10rem; width:12rem; height:12rem; line-height:12rem; border-radius: 50%;
         background:tomato; margin:auto; }
       #aaOuter {
+        height:calc(100vh - 460px); /* col-md の最小表示に合わせる */
         background:transparent; display:flex; align-items:center; justify-content:center;
         overflow:hidden;
       }
+      #aa {
+        font-size:calc(calc(100vh - 460px) / 18); /* round(行数16×1.1)=18 */
+        position:relative; top:0; left:0; margin:auto;
+      }
       .hg-theme-default .hg-button { height:60px; font-size:3rem; }
-      #aa { position:relative; top:0; left:0; margin:auto; }
       #typePanel { font-variant-ligatures:none; word-wrap: break-word; }
       #keyboard { touch-action:manipulation; }
       html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); }
@@ -180,8 +184,7 @@
 　　　　　　　　　　　(ゝ. Οﾉ 'ヽ_)　　　　　 ♪
 　　　　 ♪　　　　ミ　 ヽ_
 
-　　　　　　　か　き　く　け　こ　♫
-            </pre>
+　　　　　　　か　き　く　け　こ　♫</pre>
           </div>
           <div id="keyboard" class="simple-keyboard"></div>
           <div id="typePanel" class="alert alert-info h1 d-none">
