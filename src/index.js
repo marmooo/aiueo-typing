@@ -1,3 +1,4 @@
+const remSize = parseInt(getComputedStyle(document.documentElement).fontSize);
 const playPanel = document.getElementById("playPanel");
 const infoPanel = document.getElementById("infoPanel");
 const countPanel = document.getElementById("countPanel");
@@ -485,9 +486,17 @@ function resizeFontSize(node) {
   const colFontSize = fontSize * (nodeRect[1] - paddingRect[1]) / textRect[1] *
     0.90;
   if (colFontSize < rowFontSize) {
-    node.style.fontSize = colFontSize + "px";
+    if (colFontSize < remSize) {
+      node.style.fontSize = remSize + "px";
+    } else {
+      node.style.fontSize = colFontSize + "px";
+    }
   } else {
-    node.style.fontSize = rowFontSize + "px";
+    if (rowFontSize < remSize) {
+      node.style.fontSize = remSize + "px";
+    } else {
+      node.style.fontSize = rowFontSize + "px";
+    }
   }
 }
 
