@@ -570,6 +570,7 @@ function countdown() {
       playPanel.classList.remove("d-none");
       countPanel.classList.add("d-none");
       scorePanel.classList.add("d-none");
+      resizeFontSize(aa);
       typable();
       startTypeTimer();
       if (localStorage.getItem("bgm") == 1) {
