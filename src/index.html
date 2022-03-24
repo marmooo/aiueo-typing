@@ -48,7 +48,6 @@
           url('https://marmooo.github.io/fonts/textar-light.woff2') format('woff2');
         font-display: swap;
       }
-      html,body { height:100%; }
       pre.aa {
         font-size: 1rem;
         display: inline-block;
@@ -59,18 +58,17 @@
         white-space: pre;
         word-wrap: normal;
       }
-      #roma { height: 3rem; }
       #counter {
         font-size:10rem; width:12rem; height:12rem; line-height:12rem; border-radius: 50%;
         background:tomato; margin:auto; }
       #aaOuter {
-        height:calc(100vh - 460px); /* col-md の最小表示に合わせる */
         background:transparent; display:flex; align-items:center; justify-content:center;
         overflow:hidden;
       }
       #aa { position:relative; top:0; left:0; margin:auto; }
-      .hg-theme-default .hg-button { height:60px; font-size:3rem; }
+      #gamePanel {  height:calc(100vh - 60px); }
       #typePanel { font-variant-ligatures:none; word-wrap: break-word; }
+      .hg-theme-default .hg-button { height:60px; font-size:3rem; }
       #keyboard { touch-action:manipulation; }
       html[data-theme="dark"] { filter: invert(1) hue-rotate(180deg); }
       @-moz-document url-prefix() { html[data-theme="dark"] { background-color:black; } }
@@ -108,65 +106,37 @@
       <noscript>
         <div class="alert alert-warning text-center">JavaScript を ON にしてください</div>
       </noscript>
-      <div id="infoPanel">
-        <div class="row text-center">
-          <div class="col-sm text-start pb-3">
-            <p>ローマ<ruby>字<rt>じ</rt></ruby>が<ruby>初<rt>はじ</rt></ruby>めての<ruby>子<rt>こ</rt></ruby>のためのタイピングです。</p>
-            <p>あいうえおをタイプしてみよう！</p>
-          </div>
-          <div class="col-sm">
-            <div class="alert alert-info">
-              <div class="row flex-wrap">
-                <div class="col p-1 h5 text-nowrap">
-                  <label><ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>:</label>
-                  <span id="time" class="ms-1">120秒 / 120秒</span>
-                </div>
-                <div class="col p-1 m-auto">
-                  <button id="mode" class="btn btn-secondary btn-sm">EASY</button>
-                  <div class="form-check form-check-inline form-switch text-nowrap ms-1">
-                    <input class="form-check-input" type="checkbox" id="guideSwitch" checked>
-                    <label class="form-check-label" for="guideSwitch">ガイド</label>
+      <div id="gamePanel" class="d-flex flex-column">
+        <div id="infoPanel">
+          <div class="row">
+            <div class="col-sm pb-3">
+              <p>ローマ<ruby>字<rt>じ</rt></ruby>が<ruby>初<rt>はじ</rt></ruby>めての<ruby>子<rt>こ</rt></ruby>のためのタイピングです。</p>
+              <p>あいうえおをタイプしてみよう！</p>
+            </div>
+            <div id="timePanel" class="col-sm text-center">
+              <div class="alert alert-info">
+                <div class="row flex-wrap">
+                  <div class="col p-1 h5 text-nowrap">
+                    <label><ruby>時間<rp>(</rp><rt>じかん</rt><rp>)</rp></ruby>:</label>
+                    <span id="time" class="ms-1">120秒 / 120秒</span>
+                  </div>
+                  <div class="col p-1 m-auto">
+                    <button id="mode" class="btn btn-secondary btn-sm">EASY</button>
+                    <div class="form-check form-check-inline form-switch text-nowrap ms-1">
+                      <input class="form-check-input" type="checkbox" id="guideSwitch" checked>
+                      <label class="form-check-label" for="guideSwitch">ガイド</label>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div>
-                <button id="startButton" class="btn btm-sm btn-primary">SPACE: スタート / ESC: リセット</button>
+                <div>
+                  <button id="startButton" class="btn btm-sm btn-primary">SPACE: スタート / ESC: リセット</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="text-center">
-        <div id="countPanel" class="d-none">
-          <div id="counter"></div>
-          <pre class="aa">
-
-　　　　　　hage寿司
-　 　,;彡⌒ミ;, ＿＿,.彡⌒ミ;,　＿＿＿＿
-　 と(･ω･と⌒ヽ　と(･ω･と⌒ヽ　　 ／ｌ
-　　 (.:: ,⌒:＾｀)､）　　(.:: ,⌒:＾｀)､_）／ ／
-　／ `‘' ＾''´′　　　 `‘' ＾''´′／ ／ｌ
-　ｌ二二二二二二二二二二二ｌ／ ／
-　　ｌ＿ｌ／　　　　　　　　　　ｌ＿ｌ／
-          </pre>
-        </div>
-        <div id="scorePanel" class="text-center pb-3 d-none">
-          <h3 class="pt-3">タイピング結果</h3>
-          <pre class="aa">
-
-　 ）;;, 　 ⌒）‐‐ ―‐ ｽﾞｻｰ ー ―――彡 ⌒ ミ
-;） 　 ;;)　 ;;;｀ヽ⌒｀)⌒　 _ _＿ ＿ (ヽ　( ´･ω･)
-　;） )´⌒;;)´⌒;;)⌒;;);; )_ _＿＿ ⊂､＿_,づ　づ
-          </pre>
-          <table class="table table-striped">
-            <tr><td>総タイプ数</td><td><span id="totalType"></span> <span>回</span></td></tr>
-            <tr><td>スピード</td><td><span id="typeSpeed"></span> <span>回/秒</span></td></tr>
-            <tr><td>ミスタイプ数</td><td><span id="errorType"></span> <span>回</span></td></tr>
-          </table>
-        </div>
-        <div id="playPanel">
-          <div id="aaOuter">
-            <pre id="aa" class="aa">あ　い　う　え　お　♪
+        <div id="aaOuter" class="flex-grow-1">
+          <pre id="aa" class="aa">あ　い　う　え　お　♪
 
 　　　　　　　 ♪　　　　　　.彡⌒ミ　　　　　　　　　　　 ♪
 ♪　　　　　　　　　　.彡⌒ミ ･ω･)
@@ -182,12 +152,40 @@
 　　　　 ♪　　　　ミ　 ヽ_
 
 　　　　　　　か　き　く　け　こ　♫</pre>
-          </div>
+        </div>
+        <div id="playPanel">
           <div id="keyboard" class="simple-keyboard"></div>
           <div id="typePanel" class="alert alert-info h1 d-none">
             <div id="roma">ABC</div>
           </div>
         </div>
+        <div id="scorePanel" class="text-center pb-3 d-none">
+          <h3 class="pt-3">タイピング結果</h3>
+          <pre class="aa">
+
+　 ）;;, 　 ⌒）‐‐ ―‐ ｽﾞｻｰ ー ―――彡 ⌒ ミ
+;） 　 ;;)　 ;;;｀ヽ⌒｀)⌒　 _ _＿ ＿ (ヽ　( ´･ω･)
+　;） )´⌒;;)´⌒;;)⌒;;);; )_ _＿＿ ⊂､＿_,づ　づ
+          </pre>
+          <table class="table table-striped">
+            <tr><td>総タイプ数</td><td><span id="totalType"></span> <span>回</span></td></tr>
+            <tr><td>スピード</td><td><span id="typeSpeed"></span> <span>回/秒</span></td></tr>
+            <tr><td>ミスタイプ数</td><td><span id="errorType"></span> <span>回</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <div id="countPanel" class="text-center d-none">
+        <div id="counter"></div>
+        <pre class="aa">
+
+　　　　　　hage寿司
+　 　,;彡⌒ミ;, ＿＿,.彡⌒ミ;,　＿＿＿＿
+　 と(･ω･と⌒ヽ　と(･ω･と⌒ヽ　　 ／ｌ
+　　 (.:: ,⌒:＾｀)､）　　(.:: ,⌒:＾｀)､_）／ ／
+　／ `‘' ＾''´′　　　 `‘' ＾''´′／ ／ｌ
+　ｌ二二二二二二二二二二二ｌ／ ／
+　　ｌ＿ｌ／　　　　　　　　　　ｌ＿ｌ／
+        </pre>
       </div>
     </main>
     <footer class="pt-4 alert text-center">

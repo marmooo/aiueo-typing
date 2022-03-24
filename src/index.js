@@ -1,8 +1,10 @@
 const remSize = parseInt(getComputedStyle(document.documentElement).fontSize);
+const gamePanel = document.getElementById("gamePanel");
 const playPanel = document.getElementById("playPanel");
 const infoPanel = document.getElementById("infoPanel");
 const countPanel = document.getElementById("countPanel");
 const scorePanel = document.getElementById("scorePanel");
+const aaOuter = document.getElementById("aaOuter");
 const startButton = document.getElementById("startButton");
 const romaNode = document.getElementById("roma");
 const gradeOption = document.getElementById("gradeOption");
@@ -84,7 +86,6 @@ function toggleKeyboard() {
     virtualKeyboardOn.classList.remove("d-none");
     virtualKeyboardOff.classList.add("d-none");
     document.getElementById("keyboard").classList.remove("d-none");
-    aa.parentNode.style.height = calcAAOuterSize() + "px";
     resizeFontSize(aa);
   } else {
     virtualKeyboardOn.classList.add("d-none");
@@ -92,7 +93,6 @@ function toggleKeyboard() {
     document.getElementById("keyboard").classList.add("d-none");
     document.getElementById("guideSwitch").checked = false;
     guide = false;
-    aa.parentNode.style.height = calcAAOuterSize() + "px";
     resizeFontSize(aa);
   }
 }
@@ -380,7 +380,7 @@ function showGuide(currNode) {
 
 function typeEvent(event) {
   if (event.key == " " || event.key == "Spacebar") {
-    event.preventDefault();  // ScrollLock
+    event.preventDefault(); // ScrollLock
   }
   typeEventKey(event.key);
 }
@@ -396,7 +396,7 @@ function typeEventKey(key) {
       const state = checkTypeStyle(
         currNode,
         currNode.textContent,
-        event.key,
+        key,
         romaNode,
       );
       if (!state) {
@@ -429,15 +429,6 @@ function typeEventKey(key) {
         break;
     }
   }
-}
-
-function calcAAOuterSize() {
-  let height = document.documentElement.clientHeight;
-  height -= document.getElementById("header").offsetHeight;
-  height -= document.getElementById("infoPanel").offsetHeight;
-  height -= document.getElementById("typePanel").offsetHeight;
-  height -= document.getElementById("keyboard").offsetHeight;
-  return height;
 }
 
 function resizeFontSize(node) {
@@ -473,7 +464,7 @@ function resizeFontSize(node) {
   const font = style.fontFamily;
   const fontSize = parseFloat(style.fontSize);
   const lineHeight = parseFloat(style.lineHeight) / fontSize;
-  const nodeHeight = calcAAOuterSize();
+  const nodeHeight = aaOuter.offsetHeight;
   const nodeWidth = infoPanel.clientWidth;
   const nodeRect = [nodeWidth, nodeHeight];
   const textRect = getTextRect(node.textContent, fontSize, font, lineHeight);
@@ -550,10 +541,8 @@ function countdown() {
   typeIndex = normalCount = errorCount = solveCount = 0;
   document.getElementById("guideSwitch").disabled = true;
   document.getElementById("virtualKeyboard").disabled = true;
-  infoPanel.classList.add("d-none");
-  playPanel.classList.add("d-none");
+  gamePanel.classList.add("d-none");
   countPanel.classList.remove("d-none");
-  scorePanel.classList.add("d-none");
   counter.textContent = 3;
   const timer = setInterval(function () {
     const counter = document.getElementById("counter");
@@ -566,9 +555,11 @@ function countdown() {
       clearInterval(timer);
       document.getElementById("guideSwitch").disabled = false;
       document.getElementById("virtualKeyboard").disabled = false;
+      gamePanel.classList.remove("d-none");
+      countPanel.classList.add("d-none");
       infoPanel.classList.remove("d-none");
       playPanel.classList.remove("d-none");
-      countPanel.classList.add("d-none");
+      aaOuter.classList.remove("d-none");
       scorePanel.classList.add("d-none");
       resizeFontSize(aa);
       typable();
@@ -595,7 +586,7 @@ function replay() {
 
 function startKeyEvent(event) {
   if (event.key == " " || event.key == "Spacebar") {
-    event.preventDefault();  // ScrollLock
+    event.preventDefault(); // ScrollLock
     document.removeEventListener("keydown", startKeyEvent);
     replay();
   }
@@ -642,6 +633,7 @@ gradeOption.addEventListener("change", function () {
 function scoring() {
   infoPanel.classList.remove("d-none");
   playPanel.classList.add("d-none");
+  aaOuter.classList.add("d-none");
   countPanel.classList.add("d-none");
   scorePanel.classList.remove("d-none");
   document.removeEventListener("keydown", typeEvent);
@@ -664,14 +656,12 @@ function changeMode() {
   }
 }
 
-aa.parentNode.style.height = calcAAOuterSize() + "px";
 resizeFontSize(aa);
 
 document.getElementById("toggleDarkMode").onclick = toggleDarkMode;
 document.getElementById("toggleBGM").onclick = toggleBGM;
 document.getElementById("virtualKeyboard").onclick = toggleKeyboard;
 window.addEventListener("resize", function () {
-  aa.parentNode.style.height = calcAAOuterSize() + "px";
   resizeFontSize(aa);
 });
 document.getElementById("mode").onclick = changeMode;
