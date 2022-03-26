@@ -106,6 +106,13 @@
       <noscript>
         <div class="alert alert-warning text-center">JavaScript を ON にしてください</div>
       </noscript>
+      <div id="noTTS" class="alert alert-warning d-none">
+        <p>お使いのブラウザは音声読み上げに対応していません。
+        Firefox for Linux は発話モジュールをインストールしてください。例:
+        </p>
+        <pre><code>sudo apt install speech-dispatcher
+sudo apt install festival speech-dispatcher-festival</code></pre>
+      </div>
       <div id="gamePanel" class="d-flex flex-column">
         <div id="infoPanel">
           <div class="row">

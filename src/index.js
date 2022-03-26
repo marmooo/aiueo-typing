@@ -170,10 +170,17 @@ function loadVoices() {
     if (voices.length !== 0) {
       resolve(voices);
     } else {
+      let supported = false;
       speechSynthesis.addEventListener("voiceschanged", function () {
+        supported = true;
         voices = speechSynthesis.getVoices();
         resolve(voices);
       });
+      setTimeout(() => {
+        if (!supported) {
+          document.getElementById("noTTS").classList.remove("d-none");
+        }
+      }, 1000);
     }
   });
   allVoicesObtained.then((voices) => {
