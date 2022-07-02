@@ -10,7 +10,6 @@ const romaNode = document.getElementById("roma");
 const gradeOption = document.getElementById("gradeOption");
 const aa = document.getElementById("aa");
 const tmpCanvas = document.createElement("canvas");
-const mode = document.getElementById("mode");
 const aiueo = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
 const aiueoRoma =
   "a|i|u|e|o|ka,ca|ki|ku,cu|ke|ko,co|sa|si,shi,ci|su|se,ce|so|ta|ti,chi|tu,tsu|te|to|na|ni|nu|ne|no|ha|hi|hu,fu|he|ho|ma|mi|mu|me|mo|ya|yu|yo|ra|ri|ru|re|ro|wa|wo|nn,xn"
@@ -528,9 +527,7 @@ function typable() {
     }
     for (let i = 0; i < roma.length; i++) {
       const span = document.createElement("span");
-      if (mode.textContent != "EASY") {
-        span.classList.add("d-none");
-      }
+      span.classList.add("d-none");
       span.textContent = roma[i];
       romaNode.appendChild(span);
     }
@@ -596,10 +593,9 @@ function replay() {
 function startTypeTimer() {
   const timeNode = document.getElementById("time");
   typeTimer = setInterval(() => {
-    const arr = timeNode.textContent.split("秒 /");
-    const t = parseInt(arr[0]);
+    const t = parseInt(timeNode.textContent);
     if (t > 0) {
-      timeNode.textContent = (t - 1) + "秒 /" + arr[1];
+      timeNode.textContent = t - 1;
     } else {
       clearInterval(typeTimer);
       bgm.pause();
@@ -610,8 +606,7 @@ function startTypeTimer() {
 }
 
 function initTime() {
-  document.getElementById("time").textContent = gameTime + "秒 / " + gameTime +
-    "秒";
+  document.getElementById("time").textContent = gameTime;
 }
 
 gradeOption.addEventListener("change", () => {
@@ -636,14 +631,6 @@ function scoring() {
   document.getElementById("errorType").textContent = errorCount;
 }
 
-function changeMode() {
-  if (this.textContent == "EASY") {
-    this.textContent = "HARD";
-  } else {
-    this.textContent = "EASY";
-  }
-}
-
 resizeFontSize(aa);
 
 document.getElementById("toggleDarkMode").onclick = toggleDarkMode;
@@ -652,7 +639,6 @@ document.getElementById("virtualKeyboard").onclick = toggleKeyboard;
 window.addEventListener("resize", () => {
   resizeFontSize(aa);
 });
-document.getElementById("mode").onclick = changeMode;
 document.getElementById("guideSwitch").onchange = toggleGuide;
 startButton.addEventListener("click", replay);
 document.addEventListener("keydown", typeEvent);
