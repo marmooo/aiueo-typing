@@ -50,7 +50,7 @@ const layout109 = {
 };
 const simpleKeyboard = new SimpleKeyboard.default({
   layout: layout109,
-  onKeyPress: function (input) {
+  onKeyPress: (input) => {
     typeEventKey(input);
   },
 });
@@ -166,13 +166,13 @@ function loadAudios() {
 
 function loadVoices() {
   // https://stackoverflow.com/questions/21513706/
-  const allVoicesObtained = new Promise(function (resolve) {
+  const allVoicesObtained = new Promise((resolve) => {
     let voices = speechSynthesis.getVoices();
     if (voices.length !== 0) {
       resolve(voices);
     } else {
       let supported = false;
-      speechSynthesis.addEventListener("voiceschanged", function () {
+      speechSynthesis.addEventListener("voiceschanged", () => {
         supported = true;
         voices = speechSynthesis.getVoices();
         resolve(voices);
@@ -541,13 +541,17 @@ function typable() {
 
 function countdown() {
   playing = true;
-  typeIndex = normalCount = errorCount = solveCount = 0;
+  typeIndex =
+    normalCount =
+    errorCount =
+    solveCount =
+      0;
   document.getElementById("guideSwitch").disabled = true;
   document.getElementById("virtualKeyboard").disabled = true;
   gamePanel.classList.add("d-none");
   countPanel.classList.remove("d-none");
   counter.textContent = 3;
-  const timer = setInterval(function () {
+  const timer = setInterval(() => {
     const counter = document.getElementById("counter");
     const colors = ["skyblue", "greenyellow", "violet", "tomato"];
     if (parseInt(counter.textContent) > 1) {
@@ -580,14 +584,18 @@ function replay() {
   removeGuide(romaNode.childNodes[typeIndex]);
   initTime();
   countdown();
-  typeIndex = normalCount = errorCount = solveCount = 0;
+  typeIndex =
+    normalCount =
+    errorCount =
+    solveCount =
+      0;
   countPanel.classList.remove("d-none");
   scorePanel.classList.add("d-none");
 }
 
 function startTypeTimer() {
   const timeNode = document.getElementById("time");
-  typeTimer = setInterval(function () {
+  typeTimer = setInterval(() => {
     const arr = timeNode.textContent.split("秒 /");
     const t = parseInt(arr[0]);
     if (t > 0) {
@@ -601,24 +609,12 @@ function startTypeTimer() {
   }, 1000);
 }
 
-function downTime(n) {
-  const timeNode = document.getElementById("time");
-  const arr = timeNode.textContent.split("秒 /");
-  const t = parseInt(arr[0]);
-  const downedTime = t - n;
-  if (downedTime < 0) {
-    timeNode.textContent = "0秒 /" + arr[1];
-  } else {
-    timeNode.textContent = downedTime + "秒 /" + arr[1];
-  }
-}
-
 function initTime() {
   document.getElementById("time").textContent = gameTime + "秒 / " + gameTime +
     "秒";
 }
 
-gradeOption.addEventListener("change", function () {
+gradeOption.addEventListener("change", () => {
   initTime();
   clearInterval(typeTimer);
 });
@@ -653,7 +649,7 @@ resizeFontSize(aa);
 document.getElementById("toggleDarkMode").onclick = toggleDarkMode;
 document.getElementById("toggleBGM").onclick = toggleBGM;
 document.getElementById("virtualKeyboard").onclick = toggleKeyboard;
-window.addEventListener("resize", function () {
+window.addEventListener("resize", () => {
   resizeFontSize(aa);
 });
 document.getElementById("mode").onclick = changeMode;
