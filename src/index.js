@@ -527,7 +527,6 @@ function typable() {
     }
     for (let i = 0; i < roma.length; i++) {
       const span = document.createElement("span");
-      span.classList.add("d-none");
       span.textContent = roma[i];
       romaNode.appendChild(span);
     }
