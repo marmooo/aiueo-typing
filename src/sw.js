@@ -1,4 +1,4 @@
-var CACHE_NAME = "2022-11-26 12:58";
+var CACHE_NAME = "2023-01-13 21:10";
 var urlsToCache = [
   "/aiueo-typing/",
   "/aiueo-typing/index.js",
