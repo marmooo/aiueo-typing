@@ -102,8 +102,8 @@ function toggleKeyboard() {
   }
 }
 
-function toggleGuide() {
-  if (this.checked) {
+function toggleGuide(event) {
+  if (event.target.checked) {
     guide = true;
   } else {
     guide = false;
