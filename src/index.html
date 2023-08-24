@@ -74,12 +74,12 @@
       #typePanel { font-variant-ligatures:none; word-wrap: break-word; }
       .hg-theme-default .hg-button { height:60px; font-size:3rem; }
       #keyboard { touch-action:manipulation; }
-      .typed { color:var(--bs-gray-500); }
+      .inputed { color:var(--bs-gray-500); }
       .guide { background:var(--bs-blue) !important; color:#fff !important; }
       html[data-bs-theme="dark"] .favicon { filter: invert(1) hue-rotate(180deg); }
       html[data-bs-theme="dark"] #keyboard { background:var(--bs-gray-900); }
       html[data-bs-theme="dark"] .hg-button { background:#000; }
-      html[data-bs-theme="dark"] .typed { color:var(--bs-gray-800); }
+      html[data-bs-theme="dark"] .inputed { color:var(--bs-gray-800); }
     </style>
   </head>
   <body>
@@ -176,7 +176,9 @@ sudo apt install festival speech-dispatcher-festival</code></pre>
         <div id="playPanel" class="notranslate">
           <div id="keyboard" class="simple-keyboard"></div>
           <div id="typePanel" class="alert alert-info mb-0 h1 text-center d-none">
-            <div id="roma">ABC</div>
+            <div id="roma">
+              <span class="inputed"></span><span class="wanted">a</span><span class="remained">iueo</span>
+            </div>
           </div>
         </div>
         <div id="scorePanel" class="text-center pb-3 d-none">
@@ -220,6 +222,6 @@ sudo apt install festival speech-dispatcher-festival</code></pre>
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@3.4.52/build/index.min.js"></script>
-    <script src="index.js"></script>
+    <script type="module" src="index.js"></script>
   </body>
 </html>
