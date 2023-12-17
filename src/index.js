@@ -201,7 +201,7 @@ function removeGuide(key) {
     simpleKeyboard.setOptions({ layoutName: "default" });
   } else {
     const shift = simpleKeyboard.getButtonElement("{shift}");
-    shift.classList.remove("guide");
+    if (shift) shift.classList.remove("guide");
   }
 }
 
@@ -212,7 +212,7 @@ function showGuide(key) {
     button.classList.add("guide");
   } else {
     const shift = simpleKeyboard.getButtonElement("{shift}");
-    shift.classList.add("guide");
+    if (shift) shift.classList.add("guide");
   }
 }
 
