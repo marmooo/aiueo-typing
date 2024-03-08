@@ -17,7 +17,7 @@ const aiueo =
 const aiueoRoma =
   "a|i|u|e|o|ka,ca|ki|ku,cu|ke|ko,co|sa|si,shi,ci|su|se,ce|so|ta|ti,chi|tu,tsu|te|to|na|ni|nu|ne|no|ha|hi|hu,fu|he|ho|ma|mi|mu|me|mo|ya|yu|yo|ra|ri|ru|re|ro|wa|wo|nn,xn"
     .split("|");
-const dakuon = "がぎぐげござじずぜそだぢづでどばびぶべぼぱぴぷぺぽ";
+const dakuon = "がぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ";
 const dakuonRoma =
   "ga|gi|gu|ge|go|za|zi,ji|zu|ze|zo|da|di|du|de|do|ba|bi|bu|be|bo|pa|pi|pu|pe|po"
     .split("|");
@@ -338,7 +338,7 @@ function selectProblem() {
       return {
         yomi: aiueo[solveCount + 25],
         roma: aiueoRoma[solveCount + 25],
-        yomiji: new Romaji(aiueo[solveCount + 25]),
+        romaji: new Romaji(aiueo[solveCount + 25]),
       };
     default:
       return {
