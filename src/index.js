@@ -1,3 +1,4 @@
+import simpleKeyboard from "https://cdn.jsdelivr.net/npm/simple-keyboard@3.7.77/+esm";
 import { Romaji } from "https://cdn.jsdelivr.net/npm/@marmooo/romaji/+esm";
 
 const remSize = parseInt(getComputedStyle(document.documentElement).fontSize);
@@ -47,7 +48,7 @@ const layout109 = {
     "Z X C V B N M < >",
   ],
 };
-const simpleKeyboard = new SimpleKeyboard.default({
+const keyboard = new simpleKeyboard.default({
   layout: layout109,
   onKeyPress: (input) => {
     typeEventKey(input);
@@ -195,23 +196,23 @@ function nextProblem() {
 
 function removeGuide(key) {
   if (key == " ") key = "{space}";
-  const button = simpleKeyboard.getButtonElement(key);
+  const button = keyboard.getButtonElement(key);
   if (button) {
     button.classList.remove("guide");
-    simpleKeyboard.setOptions({ layoutName: "default" });
+    keyboard.setOptions({ layoutName: "default" });
   } else {
-    const shift = simpleKeyboard.getButtonElement("{shift}");
+    const shift = keyboard.getButtonElement("{shift}");
     if (shift) shift.classList.remove("guide");
   }
 }
 
 function showGuide(key) {
   if (key == " ") key = "{space}";
-  const button = simpleKeyboard.getButtonElement(key);
+  const button = keyboard.getButtonElement(key);
   if (button) {
     button.classList.add("guide");
   } else {
-    const shift = simpleKeyboard.getButtonElement("{shift}");
+    const shift = keyboard.getButtonElement("{shift}");
     if (shift) shift.classList.add("guide");
   }
 }
