@@ -422,6 +422,12 @@ function countdown() {
     } else {
       countdowning = false;
       playing = true;
+      if (problem) {
+        const prevNode = problem.romaji.currentNode;
+        for (const key of prevNode.children.keys()) {
+          removeGuide(key);
+        }
+      }
       normalCount = errorCount = solveCount = 0;
       clearInterval(timer);
       document.getElementById("guideSwitch").disabled = false;
