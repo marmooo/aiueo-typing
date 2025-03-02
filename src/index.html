@@ -54,11 +54,10 @@
         font-size:10rem; width:12rem; height:12rem; line-height:12rem; border-radius: 50%;
         background:tomato; color:black; margin:auto; }
       #aaOuter {
+        height:calc(100vh - 400px); overflow:hidden;
         background:transparent; display:flex; align-items:center; justify-content:center;
-        overflow:hidden;
       }
       #aa { position:relative; top:0; left:0; margin:auto; }
-      #gamePanel {  height:calc(100vh - 60px); }
       #typePanel { font-variant-ligatures:none; word-wrap: break-word; }
       .hg-theme-default .hg-button { height:60px; font-size:3rem; }
       #keyboard { touch-action:manipulation; }
@@ -109,41 +108,41 @@
         <pre><code>sudo apt install speech-dispatcher
 sudo apt install festival speech-dispatcher-festival</code></pre>
       </div>
-      <div id="gamePanel" class="d-flex flex-column">
-        <div id="infoPanel">
-          <div class="row">
-            <div class="col-md pb-3">
-              <p>ローマ字が初めての子のためのタイピングです。
-              あいうえおをタイピングしてみよう！
-              </p>
-            </div>
-            <div id="timePanel" class="col-md text-center">
-              <div class="alert alert-info">
-                <div class="d-flex flex-wrap justify-content-center">
-                  <div class="h5 text-nowrap me-4 notranslate">
-                    <span id="time">120</span>
-                    <span> / 120 sec</span>
-                  </div>
-                  <div>
-                    <div class="form-check form-check-inline form-switch text-nowrap">
-                      <input class="form-check-input" type="checkbox" id="guideSwitch" checked>
-                      <label class="form-check-label" for="guideSwitch">ガイド</label>
-                    </div>
+      <div id="infoPanel">
+        <div class="row">
+          <div class="col-md pb-3">
+            <p>ローマ字が初めての子のためのタイピングです。
+            あいうえおをタイピングしてみよう！
+            </p>
+          </div>
+          <div id="timePanel" class="col-md text-center">
+            <div class="alert alert-info">
+              <div class="d-flex flex-wrap justify-content-center">
+                <div class="h5 text-nowrap me-4 notranslate">
+                  <span id="time">120</span>
+                  <span> / 120 sec</span>
+                </div>
+                <div>
+                  <div class="form-check form-check-inline form-switch text-nowrap">
+                    <input class="form-check-input" type="checkbox" id="guideSwitch" checked>
+                    <label class="form-check-label" for="guideSwitch">ガイド</label>
                   </div>
                 </div>
-                <div class="mt-2">
-                  <button id="startButton" class="btn btm-sm btn-primary" type="button">
-                    <kbd>Space</kbd>
-                    <span class="ms-1">スタート</span>
-                    <kbd class="ms-3">Esc</kbd>
-                    <span class="ms-1">リセット</span>
-                  </button>
-                </div>
+              </div>
+              <div class="mt-2">
+                <button id="startButton" class="btn btm-sm btn-primary" type="button">
+                  <kbd>Space</kbd>
+                  <span class="ms-1">スタート</span>
+                  <kbd class="ms-3">Esc</kbd>
+                  <span class="ms-1">リセット</span>
+                </button>
               </div>
             </div>
           </div>
         </div>
-        <div id="aaOuter" class="flex-grow-1 notranslate">
+      </div>
+      <div id="gamePanel">
+        <div id="aaOuter" class="notranslate">
           <pre id="aa" class="aa">あ　い　う　え　お　♪
 
 　　　　　　　 ♪　　　　　　.彡⌒ミ　　　　　　　　　　　 ♪
@@ -161,30 +160,28 @@ sudo apt install festival speech-dispatcher-festival</code></pre>
 
 　　　　　　　か　き　く　け　こ　♫</pre>
         </div>
-        <div id="playPanel" class="notranslate">
-          <div id="keyboard" class="simple-keyboard"></div>
-          <div id="typePanel" class="alert alert-info mb-0 h1 text-center d-none">
-            <div id="roma">
-              <span class="inputed"></span><span class="wanted">a</span><span class="remained">iueo</span>
-            </div>
+        <div id="keyboard" class="simple-keyboard notranslate"></div>
+        <div id="typePanel" class="alert alert-info mb-0 h1 text-center d-none notranslate">
+          <div id="roma">
+            <span class="inputed"></span><span class="wanted">a</span><span class="remained">iueo</span>
           </div>
         </div>
-        <div id="scorePanel" class="text-center pb-3 d-none">
-          <h3 class="pt-3">スコア</h3>
-          <pre class="aa notranslate">
+      </div>
+      <div id="scorePanel" class="text-center pb-3 d-none">
+        <h3 class="pt-3">スコア</h3>
+        <pre class="aa notranslate">
 
 　 ）;;, 　 ⌒）‐‐ ―‐ ｽﾞｻｰ ー ―――彡 ⌒ ミ
 ;） 　 ;;)　 ;;;｀ヽ⌒｀)⌒　 _ _＿ ＿ (ヽ　( ´･ω･)
 　;） )´⌒;;)´⌒;;)⌒;;);; )_ _＿＿ ⊂､＿_,づ　づ
-          </pre>
-          <table class="table table-striped">
-            <tbody>
-              <tr><td>総タイプ数</td><td><span id="totalType"></span> <span>回</span></td></tr>
-              <tr><td>スピード</td><td><span id="typeSpeed"></span> <span>回/秒</span></td></tr>
-              <tr><td>ミスタイプ数</td><td><span id="errorType"></span> <span>回</span></td></tr>
-            </tbody>
-          </table>
-        </div>
+        </pre>
+        <table class="table table-striped">
+          <tbody>
+            <tr><td>総タイプ数</td><td><span id="totalType"></span> <span>回</span></td></tr>
+            <tr><td>スピード</td><td><span id="typeSpeed"></span> <span>回/秒</span></td></tr>
+            <tr><td>ミスタイプ数</td><td><span id="errorType"></span> <span>回</span></td></tr>
+          </tbody>
+        </table>
       </div>
       <div id="countPanel" class="text-center d-none notranslate">
         <div id="counter"></div>
