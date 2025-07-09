@@ -208,12 +208,11 @@ function loadVoices() {
 
 function loopVoice(text, n) {
   speechSynthesis.cancel();
+  text = new Array(n).fill(`${text}。`).join("");
   const msg = new globalThis.SpeechSynthesisUtterance(text);
   msg.voice = japaneseVoices[Math.floor(Math.random() * japaneseVoices.length)];
   msg.lang = "ja-JP";
-  for (let i = 0; i < n; i++) {
-    speechSynthesis.speak(msg);
-  }
+  speechSynthesis.speak(msg);
 }
 
 function nextProblem() {
