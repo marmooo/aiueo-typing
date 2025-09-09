@@ -63,6 +63,7 @@
       #keyboard { touch-action:manipulation; }
       .inputed { color:var(--bs-gray-500); }
       .guide { background:var(--bs-blue) !important; color:#fff !important; }
+      .off { filter:grayscale(100%); text-decoration:line-through; }
       html[data-bs-theme="dark"] .favicon { filter: invert(1) hue-rotate(180deg); }
       html[data-bs-theme="dark"] #keyboard { background:var(--bs-gray-900); }
       html[data-bs-theme="dark"] .hg-button { background:#000; }
@@ -92,6 +93,7 @@
               <svg id="bgmOn" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
               <svg id="bgmOff" class="d-none" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73L19.73 21 21 19.73 4.27 3zM14 7h4V3h-6v5.18l2 2z"/></svg>
             </button>
+            <button title="パーティクル切替" id="toggleParticle" class="fs-4 btn p-0 ms-1" type="button">⭐</button>
             <button title="ダークモード切替" id="toggleDarkMode" class="fs-4 btn p-0 ms-1" type="button">🌓</button>
           </div>
         </div>
